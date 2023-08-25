@@ -1,0 +1,48 @@
+https://leetcode.com/problems/valid-parentheses/
+
+
+//#include <stack>
+
+class Solution {
+public:
+    bool isValid(string s)
+    {
+      stack<char> st;
+      for(int i=0;i<s.length();i++)
+      {
+         //ch.push(s);
+         char c=s[i];
+         // if open bracket, stack push
+         // if close bracket, stacktop check an pop
+
+         if(c=='(' || c=='{' || c=='[')
+         {
+             st.push(c);
+         }
+         else{
+             //for closing bracket
+             if(!st.empty())
+             {
+                 char top = st.top();
+               if((c == ')'  && top =='(')  ||
+                    (c == '}'  && top =='{') ||
+                    (c == ']'  && top =='['))
+                 {
+                  st.pop();
+                }
+                else{
+                    return false;
+                }
+             }
+             else{
+                 return false;
+             }
+         }
+      }
+       if(st.empty()) // if(ch.empty())
+       return true;
+       else
+       return false;
+
+    }
+};

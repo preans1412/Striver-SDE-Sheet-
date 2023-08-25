@@ -1,0 +1,76 @@
+// Stack class.
+class Stack {
+    private:
+
+    int * arr;
+
+    int next;
+    int size;
+
+
+public:
+    
+    Stack(int capacity) {
+        arr=new int[capacity];
+        next=-1;
+          size=capacity;
+        
+    }
+
+    void push(int num) {
+        if(next>=size-1)
+        {
+          return;
+        }
+        next++;//When you push an element onto the stack, you need to increment next before assigning the value to arr[next].
+           arr[next]=num;
+             // assigning the value to arr[next] before incrementing next, which would lead to overwriting the previous value in the array and not updating the next index properly.
+      
+    }
+
+    int pop() {
+        if(next==-1)
+      {
+          return -1;
+      }
+      
+         int ans=arr[next];
+      next--;
+      return ans;
+      
+     
+    }
+
+    int top() {
+       
+      if(next==-1)
+      {
+          return -1;
+      }
+      
+          int ans=arr[next];
+      return ans;
+      
+    }
+    
+    int isEmpty() {
+       if(next==-1)
+       {
+           return 1;
+       }
+      
+       return 0;
+       
+    }
+    
+    int isFull() {
+       if(next==size-1)
+       {
+           return 1;
+       }
+     
+       return 0;
+       
+    }
+    
+};

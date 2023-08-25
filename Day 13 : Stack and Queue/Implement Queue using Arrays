@@ -1,0 +1,53 @@
+class Queue {
+
+	int front, rear;
+	//vector<int> arr;
+	int * arr;
+    int size;
+
+public:
+	Queue()
+	{
+		 size=100001 ;
+		front = -1;
+		rear = -1;
+		arr=new int[size];
+		//arr.resize(100001);
+	
+	}
+
+	// Enqueue (add) element 'e' at the end of the queue.
+        void enqueue(int e) 
+		{
+
+      if(rear==size)
+      {
+        cout<<"queue full"<<endl;
+        
+      }  else{
+        arr[rear]=e;
+        rear++;
+      }
+
+		}
+
+
+        // Dequeue (retrieve) the element from the front of the queue.
+	int dequeue()
+	{
+         if(front==rear)
+         {
+             return -1;
+         }else{
+             int ans=arr[front];
+             arr[front]=-1;
+             front++;
+             if(front==rear)
+        {
+            front=0;
+            rear=0;
+        }
+        return ans;
+         }
+	}
+};
